@@ -5,7 +5,6 @@ ruby '2.6.3'
 
 gem 'rails-countries' 
 gem 'country_select', '~> 4.0'
-
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'

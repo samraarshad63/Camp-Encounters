@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :firstname %><br />
-    <%= f.text_field :firstname, autofocus: true, required:true %>
+    <%= f.text_field :firstname, autofocus: true, required: true %>
   </div>
 
   <div class="field">
@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.text_field :email, autofocus: true, required:true  %>
+    <%= f.text_field :email, autofocus: true, required: true %>
   </div>
 
   <div class="field">
@@ -25,19 +25,19 @@
 
   <div class="field">
     <%= f.label :contact %><br />
-    <%= f.telephone_field :contact, autofocus: true, required:true , pattern:'[0-9]{3}-[0-9]{2}-[0-9]{3}',placeholder:"123-45-678"%>
+    <%= f.telephone_field :contact, autofocus: true, required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %>
   </div>
 
   <div class="field">
     <%= f.label :password %>
-    <em>(7 characters minimum)</em>
+    <em> (7 characters minimum) </em>
   </br>
-    <%= f.password_field :password , required:true , minlength: '7', pattern: '?=.*[a-z])(?=.*[A-Z])(?=.*\W)'%>
+    <%= f.password_field :password, required:true, minlength: User::MIN_PASSWORD_LENGTH, pattern: '?=.*[a-z])(?=.*[A-Z])(?=.*\W)' %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, required:true  %>
+    <%= f.password_field :password_confirmation, required: true %>
   </div>
   </br>
 
