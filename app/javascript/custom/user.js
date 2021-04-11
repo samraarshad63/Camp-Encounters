@@ -4,7 +4,7 @@ $(document).on('ready turbolinks:load', () => {
 
 function contactAdmin()
 {
-	$('#dont-agree-check').on('change', function() {
+	$('#agree').on('click', function() {
 		$('#admin-msg').removeClass('d-none');
 	})
 }

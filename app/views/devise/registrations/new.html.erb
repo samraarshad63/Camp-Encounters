@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= f.label :password %>
-    <em> (7 characters minimum) </em>
+    <em> (7 characters minimum) </em>s
   </br>
     <%= f.password_field :password, required:true, minlength: User::MIN_PASSWORD_LENGTH, pattern: '?=.*[a-z])(?=.*[A-Z])(?=.*\W)' %>
   </div>
@@ -43,13 +43,13 @@
 
   <p> By voluntarily registering on this site, you consent to: </p>
   <p> (i) the collection, use and disclosure by the XYZ Institutions of your personal information, including your personal health information for the purposes of: (a) institutional planning to assist with the creation (b) notification and/or delivery of other programs and services (c) statistical analysis necessary to further assist  (d) planning of or response to a natural disaster or other event deemed to be an emergency (collectively, the "Purposes"); and (ii) being contacted by the XYZ Institutions for reasons related to the Purposes. </p>
-  <p> For more information please review our Privacy Policy. </p>
+  <p> For more information please review our <%= link_to 'Privacy Policy.', "http://localhost:3000/pages/privacy_policy" %> </p>
   <div class="field">
     <%= f.check_box :terms, required: true  %>
     <%= f.label :terms, "I agree" %>
-    <%= check_box_tag "I dont agree", id:"dont-agree-check", onclick: "dontagreemsg()" %>
+    <%= check_box_tag "agree", class: "dont-agree-check" %>
     <%= label_tag "I dont agree" %>
-    <div class="d-none" id="admin-msg"> Hello </div>
+    <div class="d-none" id="admin-msg"> Contact Admin at xyz@campencounters.com </div>
   </div>
 
   <div class="actions">
