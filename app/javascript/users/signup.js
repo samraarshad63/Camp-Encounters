@@ -5,6 +5,6 @@ $(document).on('ready turbolinks:load', () => {
 function contactAdmin()
 {
 	$('#agree').on('click', function() {
-		$('#admin-msg').removeClass('d-none');
+		$('#contact-admin-msg').removeClass('d-none');
 	})
 }

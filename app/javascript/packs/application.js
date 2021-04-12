@@ -10,4 +10,4 @@ require('jquery')
 import jquery from 'jquery'
 window.$ = window.jquery = jquery;
 import 'bootstrap';
-import 'custom/user';
+import 'users/signup';
