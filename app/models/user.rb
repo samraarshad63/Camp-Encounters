@@ -7,4 +7,10 @@ class User < ApplicationRecord
   MIN_PASSWORD_LENGTH = 7
 
   validates_acceptance_of :terms, allow_nil: false, accept: true
+
+  USER_ROLES = {
+  	admin: "admin", 
+  	client: "client"
+  }.freeze
+  enum user_role: USER_ROLES
 end
