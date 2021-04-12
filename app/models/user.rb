@@ -6,5 +6,5 @@ class User < ApplicationRecord
   
   MIN_PASSWORD_LENGTH = 7
 
-  validates_acceptance_of :terms, :allow_nil => false, :accept => true
+  validates_acceptance_of :terms, allow_nil: false, accept: true
 end
