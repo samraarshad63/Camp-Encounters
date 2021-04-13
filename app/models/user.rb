@@ -8,8 +8,8 @@ class User < ApplicationRecord
   USER_ROLES = { 
   	user: "user"
   }.freeze
+  
   enum user_role: USER_ROLES
 
   validates_acceptance_of :terms, allow_nil: false, accept: true
-
 end
