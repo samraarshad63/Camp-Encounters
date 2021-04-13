@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates_acceptance_of :terms, allow_nil: false, accept: true
 
   USER_ROLES = { 
-  	client: "client"
+  	user: "user"
   }.freeze
   enum user_role: USER_ROLES
 end
