@@ -1,0 +1,16 @@
+<%= link_to 'MyProfile', user_path(current_user) %>
+<%= link_to 'Signout', destroy_user_session_path, method: :delete %>
+
+<h1>User profile</h1>
+<strong>Firstname: </strong><%= @user.firstname %> 
+</br>
+<strong>Lastname: </strong><%= @user.lastname %> 
+</br>
+<strong>Email: </strong><%= @user.email %> 
+</br>
+<strong>Contact number: </strong><%= @user.contact %> 
+</br>
+<strong>Country of residence: </strong><%= @user.country %> 
+</br>
+
+<%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>
