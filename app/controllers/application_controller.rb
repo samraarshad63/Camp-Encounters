@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(current_user)
-   	users_path
+    users_path
   end
 end

@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get "/pages/:page" => "pages#show", as: :pages
-  
-  resources :users, :only =>[:index, :show]
+
+  resources :users, only: [:index, :show]
 end
