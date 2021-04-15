@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :confirmable, :registerable, :recoverable, :rememberable, :validatable
   
   MIN_PASSWORD_LENGTH = 7
+  PER_PAGE = 3
   USER_ROLES = { 
   	user: "user"
   }.freeze

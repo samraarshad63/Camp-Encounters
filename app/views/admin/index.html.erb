@@ -1,4 +1,12 @@
+<%= link_to 'Signout', destroy_admin_session_path, method: :delete %>
+
 <h1>User Listing</h1>
+
+<%= form_tag(admin_index_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search], placeholder: "Search users") %>
+  <%= submit_tag ("Search") %>
+<% end %>
+
 <table>
   <tr>
     <th>Firstname</th>
@@ -20,3 +28,5 @@
     </tr>
   <% end %>
 </table>
+
+<%== pagy_nav(@pagy) %>
