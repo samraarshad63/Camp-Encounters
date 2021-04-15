@@ -13,4 +13,10 @@ class User < ApplicationRecord
   enum user_role: USER_ROLES
 
   validates_acceptance_of :terms, allow_nil: false, accept: true
+
+  def self.search(search)
+    return all if search.blank?
+
+    where('users.firstname LIKE ? OR users.lastname LIKE ? OR users.email LIKE ? OR users.id LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+  end
 end

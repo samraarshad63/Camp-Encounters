@@ -2,13 +2,14 @@
 
 <h1>User Listing</h1>
 
-<%= form_tag(admin_index_path, method: :get) do %>
-  <%= text_field_tag(:search, params[:search], placeholder: "Search users") %>
-  <%= submit_tag ("Search") %>
-<% end %>
+<%= form_with method: :get, local: true do |f| %>
+  <%= f.text_field :search,value: params[:search], class:'form-control' %>
+  <%= f.submit 'search', class: 'btn btn-primary' %>
+<% end %><hr/>
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Firstname</th>
     <th>Lastname</th>
     <th>Email</th>
@@ -17,6 +18,7 @@
   </tr>
   <% @users.each do |user| %>
     <tr>
+      <td><%= user.id %></td>
       <td><%= user.firstname %></td>
       <td><%= user.lastname %></td>
       <td><%= user.email %></td>

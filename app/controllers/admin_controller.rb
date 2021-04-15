@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @pagy, @users = pagy(User.all, items: User::PER_PAGE)
+    @pagy, @users = pagy(User.search(params[:search]), items: User::PER_PAGE)
   end
 
   def show
@@ -18,9 +18,9 @@ class AdminController < ApplicationController
     render "users/edit"
   end
 
-  def search_users
-    if @users = User.all.find{|user| user.firstname.include?(params[:search])}
-      redirect_to view_user_admin_path(@users)
-    end
+  private
+
+  def user_params
+    params.require(:user).permit(:search)
   end
 end
