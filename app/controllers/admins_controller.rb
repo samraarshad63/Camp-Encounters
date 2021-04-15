@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class AdminsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
@@ -19,7 +19,7 @@ class AdminController < ApplicationController
   end
 
   private
-
+  
   def user_params
     params.require(:user).permit(:search)
   end

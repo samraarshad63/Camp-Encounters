@@ -1,11 +1,12 @@
+<%= link_to 'UserListing', admins_path %>
 <%= link_to 'Signout', destroy_admin_session_path, method: :delete %>
 
 <h1>User Listing</h1>
 
 <%= form_with method: :get, local: true do |f| %>
-  <%= f.text_field :search,value: params[:search], class:'form-control' %>
+  <%= f.text_field :search, value: params[:search], class:'form-control' %>
   <%= f.submit 'search', class: 'btn btn-primary' %>
-<% end %><hr/>
+<% end %>
 
 <table>
   <tr>
