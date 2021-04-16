@@ -1,30 +1,30 @@
 <%= link_to 'MyProfile', admin_path %>
-<%= link_to 'UserListing', admins_path %>
+<%= link_to 'UserListing', admin_users_path %>
 <%= link_to 'Signout', destroy_admin_session_path, method: :delete %>
 
-<h1>Admin profile</h1>
+<h1>User Profile</h1>
 
 <div>
   <strong>First Name: </strong>
-  <%= @admin.firstname %>
+  <%= @user.firstname %>
 </div>
 
 <div>
   <strong>Last Name: </strong>
-  <%= @admin.lastname %>
+  <%= @user.lastname %>
 </div>
 
 <div>
   <strong>Email Address: </strong>
-  <%= @admin.email %>
+  <%= @user.email %>
 </div>
 
 <div>
   <strong>Contact Number: </strong>
-  <%= @admin.contact %>
+  <%= @user.contact %>
 </div>
 
 <div>
   <strong>Country of Residence: </strong>
-  <%= @admin.country %>
+  <%= @user.country %>
 </div>

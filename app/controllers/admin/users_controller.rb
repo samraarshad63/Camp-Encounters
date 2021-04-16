@@ -1,7 +1,9 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!
+class Admin::UsersController < AdminController
+  before_action :authenticate_admin!
 
-  def index; end
+  def index
+    @pagy, @users = pagy(User.search(params[:keyword]), items: User::PER_PAGE)
+  end
 
   def show
     @user = User.find(params[:id])
@@ -19,5 +21,11 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  private
+  
+  def user_params
+    params.require(:user).permit(:keyword)
   end
 end

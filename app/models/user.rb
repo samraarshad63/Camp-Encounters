@@ -1,7 +1,7 @@
 class User < ApplicationRecord  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  
+
   devise :database_authenticatable, :confirmable, :registerable, :recoverable, :rememberable, :validatable
   
   MIN_PASSWORD_LENGTH = 7
@@ -14,9 +14,9 @@ class User < ApplicationRecord
 
   validates_acceptance_of :terms, allow_nil: false, accept: true
 
-  def self.search(search)
-    return all if search.blank?
+  def self.search(keyword)
+    return all if keyword.blank?
 
-    where('users.firstname LIKE ? OR users.lastname LIKE ? OR users.email LIKE ? OR users.id LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
+    where('firstname LIKE ? OR lastname LIKE ? OR email LIKE ? OR id LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%")
   end
 end
