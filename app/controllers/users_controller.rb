@@ -4,13 +4,9 @@ class UsersController < ApplicationController
 
   def index; end
 
-  def show
-    @user
-  end
+  def show; end
 
-  def edit
-    @user
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)

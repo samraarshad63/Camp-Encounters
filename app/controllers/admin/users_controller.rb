@@ -1,5 +1,7 @@
 class Admin::UsersController < AdminController
   include Sortable
+
+  require 'csv'
   
   helper_method :sort_column, :sort_direction
 
@@ -8,7 +10,7 @@ class Admin::UsersController < AdminController
 
   def index
     @pagy, @users = pagy(User.search(params[:keyword]), items: User::PER_PAGE)
-    
+
     if sort_column(@users).present? && sort_direction.present?
       @users = @users.order(sort_column(@users) + ' ' + sort_direction)
     end
@@ -22,13 +24,9 @@ class Admin::UsersController < AdminController
     end
   end
 
-  def show
-    @user
-  end
+  def show; end
 
-  def edit
-    @user
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
