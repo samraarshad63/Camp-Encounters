@@ -5,6 +5,8 @@
   <%= f.submit 'search', class: 'btn btn-primary' %>
 <% end %>
 
+<button><%= link_to 'Export Users', admin_users_path(format: :csv) %></button>
+
 <table>
   <thead class='text-black'>
     <tr>

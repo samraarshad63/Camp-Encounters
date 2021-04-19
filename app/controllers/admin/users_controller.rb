@@ -8,8 +8,17 @@ class Admin::UsersController < AdminController
 
   def index
     @pagy, @users = pagy(User.search(params[:keyword]), items: User::PER_PAGE)
+    
     if sort_column(@users).present? && sort_direction.present?
       @users = @users.order(sort_column(@users) + ' ' + sort_direction)
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"user-list\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
     end
   end
 
