@@ -1,4 +1,4 @@
-<%- User::HEADERS -%>
+<%- User::CSV_HEADERS -%>
 <%- @users.each do |user| -%>
   <%= CSV.generate_line([user.firstname, user.lastname, user.email, user.contact, user.country]) -%>
 <%- end -%>
