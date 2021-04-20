@@ -8,7 +8,7 @@ class User < ApplicationRecord
   USER_ROLES = { 
     user: "user"
   }.freeze
-  HEADERS = ['Firstname', 'Lastname', 'Email', 'Contact', 'Country']
+  CSV_HEADERS = ['Firstname', 'Lastname', 'Email', 'Contact', 'Country']
   
   enum user_role: USER_ROLES
 
