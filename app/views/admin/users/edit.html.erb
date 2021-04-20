@@ -1,0 +1,37 @@
+<h1>Edit User Profile</h1>
+
+<%= form_with model: [:admin, @user], local: true do |f| %>
+
+  <div class="field">
+    <%= f.label :firstname %>
+    <p><%= f.text_field :firstname, autofocus: true, autocomplete: :firstname %></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %>
+    <p><%= f.text_field :lastname, autocomplete: :lastname %></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <p><%= f.email_field :email, autocomplete: :email %></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :country %>
+    <p><%= f.country_select :country, autocomplete: :country %></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact %>
+    <p><%= f.telephone_field :contact, autofocus: true, required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+    <p><%= f.password_field :password, autocomplete: "new-password" %></p>
+  </div>
+
+  <%= f.submit %>
+
+<% end %>

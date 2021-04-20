@@ -5,12 +5,12 @@
 
   <div class="field">
     <div><%= f.label :firstname %><div>
-    <%= f.email_field :firstname, autofocus: true, autocomplete: "firstname" %>
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
   </div>
 
   <div class="field">
     <div><%= f.label :lastname %></div>
-    <%= f.email_field :lastname, autocomplete: "lastname" %>
+    <%= f.text_field :lastname, autocomplete: "lastname" %>
   </div>
 
   <div class="field">
@@ -25,7 +25,7 @@
 
   <div class="field">
     <div><%= f.label :contact %></div>
-    <%= f.email_field :contact, autocomplete: "contact" %>
+    <%= f.telephone_field :contact, autofocus: true, required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
