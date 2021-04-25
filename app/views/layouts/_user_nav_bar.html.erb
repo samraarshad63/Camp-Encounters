@@ -1,0 +1,11 @@
+<header>
+  <div class="navbar-inner">
+    <div class="container">
+      <nav class="navbar navbar-light bg-light">
+        <%= link_to 'My Profile', user_path(current_user) %>
+        <%= link_to 'Select Camp', user_show_camps_path(current_user) %>
+        <%= link_to 'Signout', destroy_user_session_path, method: :delete %>
+      </nav>
+    </div>
+  </div>
+</header>

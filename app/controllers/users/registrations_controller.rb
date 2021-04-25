@@ -1,6 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :update_allowed_parameters
 
+  layout "users", except: [:new]
+
   protected
   
   def update_allowed_parameters

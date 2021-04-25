@@ -4,9 +4,13 @@ Rails.application.routes.draw do
 
   root 'home#index', as: :home
   get "/pages/:page" => "pages#show", as: :pages
+  get "/users/:id/camps" => "users#show_camps", as: :user_show_camps
+  get "/users/:id/camp" => "users#select_camp", as: :user_select_camp
+  get "/users/:id/camp/step-1" => "users#personal_info", as: :user_personal_info
 
   namespace :admin do
     resources :users
+    resources :camps
   end
 
   resources :users

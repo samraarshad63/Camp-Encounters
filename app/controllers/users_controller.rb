@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def edit; end
 
+  def personal_info; end
+
   def update
     if @user.update(user_params)
       redirect_to @user
@@ -16,7 +18,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def show_camps
+    @camps = Camp.where(status: "active")
+  end
+
+  def select_camp
+    if CampUser.find_by(user_id: params[:id])
+      flash[:alert] = "You have already selected camp"
+      redirect_to user_personal_info_path
+    else
+      @camp_user = CampUser.new(camp_users_params)
+      @camp_user.user_id = params[:id]
+      @camp_user.save
+      redirect_to user_personal_path
+    end
+  end
+
   def find_user
     @user = User.find(params[:id])
+  end
+
+  private
+  
+  def camp_users_params
+    params.permit(:camp_id)
   end
 end

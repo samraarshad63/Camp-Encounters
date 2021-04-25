@@ -1,4 +1,4 @@
-<h1>Edit User Profile</h1>
+<h1>Edit Profile</h1>
 
 <%= form_with model: [:admin, @user], local: true do |f| %>
 
@@ -10,11 +10,6 @@
   <div class="field">
     <%= f.label :lastname %>
     <p><%= f.text_field :lastname, autocomplete: :lastname %></p>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <p><%= f.email_field :email, autocomplete: :email %></p>
   </div>
 
   <div class="field">
@@ -30,6 +25,11 @@
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
     <p><%= f.password_field :password, autocomplete: "new-password" %></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <p><%= f.email_field :email, autocomplete: :email %></p>
   </div>
 
   <%= f.submit %>

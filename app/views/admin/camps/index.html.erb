@@ -1,0 +1,20 @@
+<h1>Camp Listing</h1>
+
+<button><%= link_to 'New Camp', new_admin_camp_path %></button>
+
+<table class="table">
+  <thead class='text-black'>
+    <tr>
+      <th>Camp ID</th>
+      <th>Camp Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Locations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @camps %>
+  </tbody>
+</table>
+
+<%== pagy_nav(@pagy) %>

@@ -2,12 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :confirmable, :registerable, :recoverable, :rememberable, :validatable
+
+  has_one :camp, through: :camp_user
   
   MIN_PASSWORD_LENGTH = 7
   PER_PAGE = 3
   USER_ROLES = { 
     user: "user"
-  }.freeze
+  }
   CSV_HEADERS = ['Firstname', 'Lastname', 'Email', 'Contact', 'Country']
   
   enum user_role: USER_ROLES

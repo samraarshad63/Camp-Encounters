@@ -1,60 +1,68 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname, autofocus: true, required: true %>
-  </div>
+    <div class="field">
+      <%= f.label :firstname, "First Name *" %>
+      <p><%= f.text_field :firstname, autofocus: true, required: true %></p>
+    </div>
 
-  <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname, autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label :lastname, "Last Name" %>
+      <p><%= f.text_field :lastname, autofocus: true %></p>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, autofocus: true, required: true %>
-  </div>
+    <div class="field">
+      <%= f.label :country, "Country *" %>
+      <p><%= f.country_select :country, required: true %></p>
+    </div>
 
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.country_select :country %>
-  </div>
+    <div class="field">
+      <%= f.label :contact, "Phone Number *" %>
+      <p><%= f.telephone_field :contact, autofocus: true, required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %></p>
+    </div>
 
-  <div class="field">
-    <%= f.label :contact %><br />
-    <%= f.telephone_field :contact, autofocus: true, required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %>
-  </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <em> (7 characters minimum) </em>s
-  </br>
-    <%= f.password_field :password, required:true, minlength: User::MIN_PASSWORD_LENGTH, pattern: '?=.*[a-z])(?=.*[A-Z])(?=.*\W)' %>
-  </div>
+    <div class="field">
+      <%= f.label :password, "Password *" %>
+      <em>(7 characters minimum)</em>
+      <p><%= f.password_field :password, id: 'password', required: true, pattern: '(?=.[a-z])(?=.[A-Z])(?=.*[! \" ? $ % ^ & ().])', minlength: User::MIN_PASSWORD_LENGTH %></p>
+      <p>The password should include atleast one lowercase, one uppercase and one special character</p>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, required: true %>
-  </div>
-  </br>
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirm Password *" %>
+      <p><%= f.password_field :password_confirmation, id: 'password_confirmation', required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", minlength: User::MIN_PASSWORD_LENGTH %></p>
+    </div>
 
-  <p> By voluntarily registering on this site, you consent to: </p>
-  <p> (i) the collection, use and disclosure by the XYZ Institutions of your personal information, including your personal health information for the purposes of: (a) institutional planning to assist with the creation (b) notification and/or delivery of other programs and services (c) statistical analysis necessary to further assist  (d) planning of or response to a natural disaster or other event deemed to be an emergency (collectively, the "Purposes"); and (ii) being contacted by the XYZ Institutions for reasons related to the Purposes. </p>
-  <p> For more information please review our <%= link_to 'Privacy Policy.', pages_path('privacy_policy') %> </p>
-  <div class="field">
-    <%= f.check_box :terms, required: true  %>
-    <%= f.label :terms, "I agree" %>
-    <%= check_box_tag "agree", class: "dont-agree-check" %>
-    <%= label_tag "I dont agree" %>
-    <div class="d-none" id="contact-admin-msg"> Contact Admin at admin@campencounters.com </div>
-  </div>
+    <div class="d-none" id="password_error_message" style="color: red">Passwords dont match</div>
+    
+    <div class="field">
+      <%= f.label :email, "Email Address *" %>
+      <p><%= f.email_field :email, autofocus: true, required: true %></p>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <p> By voluntarily registering on this site, you consent to: </p>
+    <p> (i) the collection, use and disclosure by the XYZ Institutions of your personal information, including your personal health information for the purposes of: (a) institutional planning to assist with the creation (b) notification and/or delivery of other programs and services (c) statistical analysis necessary to further assist  (d) planning of or response to a natural disaster or other event deemed to be an emergency (collectively, the "Purposes"); and (ii) being contacted by the XYZ Institutions for reasons related to the Purposes. </p>
+    <p> For more information please review our <%= link_to 'Privacy Policy.', pages_path('privacy_policy') %> </p>
+    
+    <div class="field">
+      <%= f.check_box :terms, required: true, id: 'agree' %>
+      <%= f.label :terms, "I agree" %>
+      <%= check_box_tag "dont_agree", class: "dont-agree-check" %>
+      <%= label_tag "I dont agree" %>
+      <div class="d-none" id="contact-admin-msg"> Contact Admin at admin@campencounters.com </div>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div class="actions">
+      <%= f.submit "Sign up", id: "signup" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>
