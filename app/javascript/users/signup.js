@@ -1,11 +1,11 @@
 $(document).on('ready turbolinks:load', () => {
-	contactAdmin();
+  contactAdmin();
   checkAgree();
   confirmPassword();
 });
 
 function contactAdmin() {
-	$('#dont_agree').on('click', function() {
+  $('#dont_agree').on('click', function() {
     $('#contact-admin-msg').removeClass('d-none');
     $('#agree').prop('checked', false);
   });
