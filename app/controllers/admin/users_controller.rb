@@ -30,10 +30,11 @@ class Admin::UsersController < AdminController
   def edit; end
 
   def update
-    if @user.update(user_params)
-      redirect_to @user
+    if @user.update(update_user_params)
+      redirect_to admin_users_path
     else
       render 'edit'
+      flash[:alert] = "Couldnt save changes.Try again."
     end
   end
 
@@ -46,6 +47,14 @@ class Admin::UsersController < AdminController
   
   def user_params
     params.require(:user).permit(:keyword)
+  end
+
+  def update_user_params
+    if params[:user][:password].blank?
+      params.require(:user).permit(:id, :firstname, :lastname, :email, :country, :contact)
+    else
+      params.require(:user).permit(:id, :firstname, :lastname, :email, :password, :country, :contact)
+    end
   end
 
   def find_user
