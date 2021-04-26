@@ -6,9 +6,9 @@ $(document).on('ready turbolinks:load', () => {
 
 function contactAdmin() {
 	$('#dont_agree').on('click', function() {
-		$('#contact-admin-msg').removeClass('d-none');
+    $('#contact-admin-msg').removeClass('d-none');
     $('#agree').prop('checked', false);
-	});
+  });
 };
 
 function checkAgree() {

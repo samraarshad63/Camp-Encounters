@@ -15,7 +15,7 @@ class Admin::UsersController < AdminController
     if sort_column(@users).present? && sort_direction.present?
       @users = @users.order(sort_column(@users) + ' ' + sort_direction)
     end
-    
+
     respond_to do |format|
       format.html
       format.csv do
