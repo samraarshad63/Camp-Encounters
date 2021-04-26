@@ -24,12 +24,13 @@ class UsersController < ApplicationController
 
   def select_camp
     if CampUser.find_by(user_id: params[:id])
-      flash[:alert] = "You have already selected camp"
+      flash[:notice] = "You have already selected camp"
       redirect_to user_personal_info_path
     else
       @camp_user = CampUser.new(camp_users_params)
       @camp_user.user_id = params[:id]
       @camp_user.save
+      flash[:notice] = "Camp Selected"
       redirect_to user_personal_path
     end
   end

@@ -11,10 +11,10 @@
   </head>
 
   <body>
-    <%= render "layouts/flash_messages" %>
     <%= render "layouts/admin_nav_bar" %>
     
     <div class="container">
+      <%= render "layouts/flash_messages" %>
       <%= yield %>
     </div>
   </body>
