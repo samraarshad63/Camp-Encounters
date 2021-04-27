@@ -1,5 +1,7 @@
 <h1>Edit User Profile</h1>
 
+<%= render "layouts/error_messages", object: @user %>
+
 <%= form_with model: [:admin, @user], local: true do |f| %>
 
   <div class="field">
@@ -37,7 +39,5 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
-
-  <%= render "layouts/error_messages", object: @user %>
 
 <% end %>

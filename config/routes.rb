@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'home#index', as: :home
   get "/pages/:page" => "pages#show", as: :pages
-  
+
   namespace :admin do
     resources :users
     resources :camps
