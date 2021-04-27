@@ -4,12 +4,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   layout "users", except: [:new]
 
   def update
-    if @user.update(user_params)
-      redirect_to user_path(current_user)
-      flash[:notice] = "Profile updated"
+    if params.dig(:user, :password).blank?
+      if @user.update_without_password(user_params)
+        redirect_to user_path(current_user), notice: 'Profile updated successfully'
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
-      flash[:alert] = "Couldnt save changes.Try again."
+      if @user.update(user_params)
+        redirect_to user_path(current_user), notice: 'Profile updated successfully'
+      else
+        render 'edit'
+      end
     end
   end
 
@@ -20,10 +26,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    if params[:user][:password].blank?
-      params.require(:user).permit(:id, :firstname, :lastname, :email, :country, :contact)
-    else
       params.require(:user).permit(:id, :firstname, :lastname, :email, :password, :country, :contact)
-    end
   end
 end

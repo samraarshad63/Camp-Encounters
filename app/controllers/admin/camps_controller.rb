@@ -13,10 +13,9 @@ class Admin::CampsController < AdminController
     @camp = Camp.new(camp_params)
 
     if @camp.save
-      redirect_to admin_camps_path
+      redirect_to admin_camps_path, notice: 'Camp added successfully'
     else
-      flash[:alert] = "Camp not added.Try again"
-      redirect_to admin_camps_path
+      render 'new'
     end
   end
 

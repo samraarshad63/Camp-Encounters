@@ -10,27 +10,19 @@ class UsersController < ApplicationController
 
   def personal_info; end
 
-  def update
-    if @user.update(user_params)
-      redirect_to @user
-    else
-      render 'edit'
-    end
-  end
-
   def show_camps
-    @camps = Camp.where(status: "active")
+    @camps = Camp.active
   end
 
   def select_camp
-    if CampUser.find_by(user_id: params[:id])
-      flash[:notice] = "You have already selected camp"
-      redirect_to user_personal_info_path
+    return redirect_to user_personal_info_path, notice: "You have already selected camp" if CampUser.find_by(user_id: params[:id]).present?
+
+    @camp_user = CampUser.new(camp_users_params)
+    @camp_user.user_id = params[:id]
+    if @camp_user.save
+      redirect_to user_personal_path, notice: 'Camp Selected'
     else
-      @camp_user = CampUser.new(camp_users_params)
-      @camp_user.user_id = params[:id]
-      @camp_user.save
-      flash[:notice] = "Camp Selected"
+      flash[:alert] = @user.errors.full_messages.to_sentence
       redirect_to user_personal_path
     end
   end

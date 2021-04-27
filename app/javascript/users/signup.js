@@ -20,8 +20,8 @@ function checkAgree() {
 
 function confirmPassword() {
   $('#signup').on('click', function () {
-    var password = $("#password").val();
-    var confirmPassword = $("#password_confirmation").val();
+    let password = $("#password").val();
+    let confirmPassword = $("#password_confirmation").val();
     
     if (password != confirmPassword)
       $('#password_error_message').removeClass('d-none');

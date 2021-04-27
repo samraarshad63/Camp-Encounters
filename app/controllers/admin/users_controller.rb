@@ -9,7 +9,7 @@ class Admin::UsersController < AdminController
   before_action :find_user, except: [:index]
 
   def index
-    @all_users = User.all
+    @csv_users_list = User.all
     @pagy, @users = pagy(User.search(params[:keyword]), items: User::PER_PAGE)
 
     if sort_column(@users).present? && sort_direction.present?
@@ -30,17 +30,28 @@ class Admin::UsersController < AdminController
   def edit; end
 
   def update
-    if @user.update(update_user_params)
-      redirect_to admin_users_path
+    if params.dig(:user, :password).blank?
+      if @user.update_without_password(update_user_params)
+        redirect_to admin_users_path, notice: 'User profile updated successfully'
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
-      flash[:alert] = "Couldnt save changes.Try again."
+      if @user.update(update_user_params)
+        redirect_to admin_users_path, notice: 'User profile updated successfully'
+      else
+        render 'edit'
+      end
     end
   end
 
   def destroy
-    @user.destroy
-    redirect_to admin_users_path
+    if @user.destroy
+      redirect_to admin_users_path, notice: 'User destroyed successfully'
+    else
+      flash[:alert] = @user.errors.full_messages.to_sentence
+      redirect_to admin_users_path
+    end
   end
 
   private
@@ -50,11 +61,7 @@ class Admin::UsersController < AdminController
   end
 
   def update_user_params
-    if params[:user][:password].blank?
-      params.require(:user).permit(:id, :firstname, :lastname, :email, :country, :contact)
-    else
-      params.require(:user).permit(:id, :firstname, :lastname, :email, :password, :country, :contact)
-    end
+    params.require(:user).permit(:id, :firstname, :lastname, :email, :password, :country, :contact)
   end
 
   def find_user

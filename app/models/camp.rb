@@ -1,6 +1,7 @@
 class Camp < ApplicationRecord
   has_and_belongs_to_many :locations
-  has_many :users, through: :camp_user
+  has_many :camp_users
+  has_many :users, through: :camp_users
 
   CAMPS_PER_PAGE = 5
   CAMP_STATUS = { 
