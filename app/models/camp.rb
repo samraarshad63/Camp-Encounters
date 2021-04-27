@@ -14,6 +14,7 @@ class Camp < ApplicationRecord
   def self.search(keyword)
     return all if keyword.blank?
 
-    where('camp_name LIKE :value', {value: keyword})
+    keyword = keyword.downcase
+    where('lower(camp_name) like :value', {value: keyword})
   end
 end

@@ -21,7 +21,8 @@ class User < ApplicationRecord
 
   def self.search(keyword)
     return all if keyword.blank?
-
-    where('firstname LIKE :value OR lastname LIKE :value OR email LIKE :value OR id LIKE :value', {value: keyword})
+    
+    keyword = keyword.downcase
+    where('lower(firstname) like :value OR lower(lastname) like :value OR lower(email) like :value OR id like :value', {value: keyword})
   end
 end
