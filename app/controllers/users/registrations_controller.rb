@@ -4,19 +4,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   layout "users", except: [:new]
 
   def update
-    if params.dig(:user, :password).blank?
-      if @user.update_without_password(user_params)
-        redirect_to user_path(current_user), notice: 'Profile updated successfully'
-      else
-        render 'edit'
-      end
-    else
-      if @user.update(user_params)
-        redirect_to user_path(current_user), notice: 'Profile updated successfully'
-      else
-        render 'edit'
-      end
-    end
+    update =
+        if params.dig(:user, :password).blank?
+          @user.update_without_password(user_params)
+        else
+          @user.update(user_params)
+        end
+
+    return redirect_to user_path(current_user), notice: 'Profile updated successfully' if update
+    
+    render 'edit'
   end
 
   protected

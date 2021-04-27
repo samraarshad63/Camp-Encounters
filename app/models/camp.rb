@@ -1,6 +1,6 @@
 class Camp < ApplicationRecord
   has_and_belongs_to_many :locations
-  has_many :camp_users
+  has_many :camp_users, dependent: :destroy 
   has_many :users, through: :camp_users
 
   CAMPS_PER_PAGE = 5
@@ -10,6 +10,8 @@ class Camp < ApplicationRecord
   }
 
   enum status: CAMP_STATUS
+
+  scope :active, -> { where(status: "active") }
 
   def self.search(keyword)
     return all if keyword.blank?

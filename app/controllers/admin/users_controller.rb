@@ -30,28 +30,25 @@ class Admin::UsersController < AdminController
   def edit; end
 
   def update
-    if params.dig(:user, :password).blank?
-      if @user.update_without_password(update_user_params)
-        redirect_to admin_users_path, notice: 'User profile updated successfully'
-      else
-        render 'edit'
-      end
-    else
-      if @user.update(update_user_params)
-        redirect_to admin_users_path, notice: 'User profile updated successfully'
-      else
-        render 'edit'
-      end
-    end
+    update =
+        if params.dig(:user, :password).blank?
+          @user.update_without_password(update_user_params)
+        else
+          @user.update(update_user_params)
+        end
+
+    return redirect_to admin_users_path, notice: 'User profile updated successfully' if update
+
+    render 'edit'
   end
 
   def destroy
     if @user.destroy
-      redirect_to admin_users_path, notice: 'User destroyed successfully'
+      flash[:notice] = 'User destroyed successfully'
     else
       flash[:alert] = @user.errors.full_messages.to_sentence
-      redirect_to admin_users_path
     end
+    redirect_to admin_users_path
   end
 
   private

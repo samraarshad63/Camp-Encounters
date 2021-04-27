@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :confirmable, :registerable, :recoverable, :rememberable, :validatable
 
-  has_one :camp_user
+  has_one :camp_user, dependent: :destroy
   has_one :camp, through: :camp_user
   
   MIN_PASSWORD_LENGTH = 7
@@ -14,8 +14,6 @@ class User < ApplicationRecord
   CSV_HEADERS = ['Firstname', 'Lastname', 'Email', 'Contact', 'Country']
   
   enum user_role: USER_ROLES
-
-  scope :active, -> { where(status: "active") }
 
   validates_acceptance_of :terms, allow_nil: false, accept: true
 
