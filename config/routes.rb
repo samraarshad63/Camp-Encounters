@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admin, controllers: { sessions: "admin/sessions" }
 
   root 'home#index', as: :home
-  get "/pages/:page" => "pages#show", as: :pages
+  get "/pages/:page", to: "pages#show", as: :pages
 
   namespace :admin do
     resources :users
