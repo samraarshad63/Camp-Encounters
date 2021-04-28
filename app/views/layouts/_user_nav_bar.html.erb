@@ -4,9 +4,9 @@
   <div class="navbar-inner">
     <div class="container">
       <nav class="navbar navbar-light bg-light">
-        <%= link_to 'Users', admin_users_path %>
-        <%= link_to 'Camps', admin_camps_path %>
-        <%= link_to 'Signout', destroy_admin_session_path, method: :delete %>
+        <%= link_to 'My Profile', user_path(current_user) %>
+        <%= link_to 'Select Camp', show_camps_user_path(current_user) %>
+        <%= link_to 'Signout', destroy_user_session_path, method: :delete %>
       </nav>
     </div>
   </div>

@@ -4,28 +4,23 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <div><%= f.label :firstname %><div>
-    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+    <%= f.label :firstname, "First Name" %>
+    <p><%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %></p>
   </div>
 
   <div class="field">
-    <div><%= f.label :lastname %></div>
-    <%= f.text_field :lastname, autocomplete: "lastname" %>
+    <%= f.label :lastname, "Last Name" %>
+    <p><%= f.text_field :lastname, autocomplete: "lastname" %></p>
   </div>
 
   <div class="field">
-    <div><%= f.label :email %></div>
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.label :country, "Country" %>
+    <p><%= f.country_select :country, autocomplete: "country" %></p>
   </div>
 
   <div class="field">
-    <div><%= f.label :country %></div>
-    <%= f.country_select :country, autocomplete: "country" %>
-  </div>
-
-  <div class="field">
-    <div><%= f.label :contact %></div>
-    <%= f.telephone_field :contact, autofocus: true, required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %>
+    <%= f.label :contact, "Phone Number" %>
+    <p><%= f.telephone_field :contact, autofocus: true, required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %></p>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -33,21 +28,25 @@
   <% end %>
 
   <div class="field">
-    <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></div>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <div><em><%= @minimum_password_length %> characters minimum</em></div>
-    <% end %>
+    <%= f.label :password, "Password" %><i>(leave blank if you don't want to change it)</i>
+    <em>(7 characters minimum)</em>
+    <p><%= f.password_field :password, id: 'password', minlength: User::MIN_PASSWORD_LENGTH %></p>
+    <p>The password should include atleast one lowercase, one uppercase and one special character</p>
   </div>
 
   <div class="field">
-    <div><%= f.label :password_confirmation %></div>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <p><%= f.password_field :password_confirmation, id: 'password_confirmation', minlength: User::MIN_PASSWORD_LENGTH %></p>
   </div>
 
   <div class="field">
-    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></div>
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :current_password %><i>(we need your current password to confirm your changes)</i>
+    <p><%= f.password_field :current_password, autocomplete: "current-password", required: true %></p>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "Email Address" %>
+    <p><%= f.email_field :email, autocomplete: "email" %></p>
   </div>
 
   <div class="actions">

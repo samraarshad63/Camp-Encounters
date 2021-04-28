@@ -1,37 +1,43 @@
 <h1>Edit User Profile</h1>
 
+<%= render "layouts/error_messages", object: @user %>
+
 <%= form_with model: [:admin, @user], local: true do |f| %>
 
   <div class="field">
-    <%= f.label :firstname %>
-    <p><%= f.text_field :firstname, autofocus: true, autocomplete: :firstname %></p>
+    <%= f.label :firstname, "First Name" %>
+    <p><%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %></p>
   </div>
 
   <div class="field">
-    <%= f.label :lastname %>
-    <p><%= f.text_field :lastname, autocomplete: :lastname %></p>
+    <%= f.label :lastname, "Last Name" %>
+    <p><%= f.text_field :lastname, autocomplete: "lastname" %></p>
   </div>
 
   <div class="field">
-    <%= f.label :email %>
-    <p><%= f.email_field :email, autocomplete: :email %></p>
+    <%= f.label :country, "Country" %>
+    <p><%= f.country_select :country, autocomplete: "country" %></p>
   </div>
 
   <div class="field">
-    <%= f.label :country %>
-    <p><%= f.country_select :country, autocomplete: :country %></p>
-  </div>
-
-  <div class="field">
-    <%= f.label :contact %>
+    <%= f.label :contact, "Phone Number" %>
     <p><%= f.telephone_field :contact, autofocus: true, required: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %></p>
   </div>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-    <p><%= f.password_field :password, autocomplete: "new-password" %></p>
+    <%= f.label :password, "Password" %><i>(leave blank if you don't want to change it)</i>
+    <em>(7 characters minimum)</em>
+    <p><%= f.password_field :password, id: 'password', minlength: User::MIN_PASSWORD_LENGTH %></p>
+    <p>The password should include atleast one lowercase, one uppercase and one special character</p>
   </div>
 
-  <%= f.submit %>
+  <div class="field">
+    <%= f.label :email, "Email Address" %>
+    <p><%= f.email_field :email, autocomplete: "email" %></p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
 
 <% end %>

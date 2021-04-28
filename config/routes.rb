@@ -7,8 +7,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :camps
   end
 
-  resources :users
+  resources :users do
+    member do
+      get :show_camps
+      post :select_camp
+      get :personal_info
+    end
+  end
   resources :admin, only: [:index, :show] 
 end
