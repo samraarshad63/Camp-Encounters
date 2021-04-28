@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     member do
       get :show_camps
       post :select_camp
-      get :personal_info
+      get :camp_intro
+      get :check_camp_date
     end
   end
   resources :admin, only: [:index, :show] 

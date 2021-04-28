@@ -3,6 +3,8 @@ class Camp < ApplicationRecord
   has_many :camp_users, dependent: :destroy 
   has_many :users, through: :camp_users
 
+  validate :camp_dates
+
   CAMPS_PER_PAGE = 5
   CAMP_STATUS = { 
     active: "active",
@@ -18,5 +20,11 @@ class Camp < ApplicationRecord
 
     keyword = keyword.downcase
     where('lower(camp_name) like :value', {value: keyword})
+  end
+
+  def camp_dates
+    return unless end_date < start_date
+    
+    errors.add :start_date, 'should be before the end date'
   end
 end
