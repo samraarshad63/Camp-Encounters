@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_174208) do
+ActiveRecord::Schema.define(version: 2021_04_28_214330) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
@@ -33,11 +33,22 @@ ActiveRecord::Schema.define(version: 2021_04_24_174208) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "camp_users", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "camp_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "camp_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "gender"
+    t.string "mailing_address"
+    t.string "social_media_handle", default: "none"
+    t.string "emergency_contact"
+    t.text "side_note"
+    t.string "camp_activity", default: "none"
+    t.string "contribution"
+    t.boolean "require_first_aid", default: false
+    t.string "health_condition", default: "none"
+    t.boolean "avail_food_service", default: false
+    t.boolean "avail_internet_service", default: false
     t.index ["camp_id"], name: "index_camp_users_on_camp_id"
     t.index ["user_id"], name: "index_camp_users_on_user_id"
   end

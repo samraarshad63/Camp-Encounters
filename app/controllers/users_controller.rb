@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def check_camp_date
     return redirect_to camp_intro_user_path, notice: 'Please participate in the next camp' if @user.camp.start_date < DateTime.now
 
-    redirect_to camp_intro_user_path, notice:'You can register in this camp'
+    redirect_to camp_intro_user_path, notice: 'You can register in this camp'
   end
 
   def find_user

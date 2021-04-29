@@ -1,0 +1,14 @@
+<h3>Personal info</h3>
+
+<%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
+  <table>
+    <tr>Select gender: *</tr>
+    <td><%= f.label :gender, "Male" %> <%= radio_button_tag(:gender, "male") %></td>
+    <td><%= f.label :gender, "Female" %> <%= radio_button_tag(:gender, "female") %></td>
+    <td><%= f.label :gender, "Other" %> <%= radio_button_tag(:gender, "other") %></td>
+  </table>
+  
+  <%= f.submit "Next" %>
+<% end %>
+
+<%= link_to 'skip', next_wizard_path %>

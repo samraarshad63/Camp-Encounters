@@ -19,4 +19,5 @@ Rails.application.routes.draw do
     end
   end
   resources :admin, only: [:index, :show] 
+  resources :camp_applications
 end

@@ -11,3 +11,4 @@ import jquery from 'jquery'
 window.$ = window.jquery = jquery;
 import 'bootstrap';
 import 'users/signup';
+import 'camp_applications/camp_activity';

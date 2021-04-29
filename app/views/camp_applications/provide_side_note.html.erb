@@ -1,0 +1,10 @@
+<h3>Write us note!</h3>
+
+<%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
+  <%= f.label :side_note, "Leave a suggestion or anything you wanna let us know." %>
+  <p><%= f.text_area :side_note, autofocus: true %></p>
+
+  <%= f.submit "Next" %>
+<% end %>
+
+<%= link_to 'skip', next_wizard_path %>
