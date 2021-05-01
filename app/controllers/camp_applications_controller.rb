@@ -2,6 +2,7 @@ class CampApplicationsController < ApplicationController
   include Wicked::Wizard
 
   before_action :find_application_for_user, except: :index
+  before_action :set_progress, only: [:show]
 
   steps :personal_info, :emergency_contact_info, :camp_activities, :condition_of_health, :need_for_first_aid, :avail_food_Service, :avail_internet_service, :provide_social_media_info, :provide_side_note, :confirm_camp_registration
 
@@ -15,6 +16,8 @@ class CampApplicationsController < ApplicationController
       @camp_application.update_attribute(:gender, params[:gender])
     when :emergency_contact_info
       @camp_application.update(contact_info_params)
+    when :camp_activities
+      @camp_application.update(camp_activities_params)
     when :condition_of_health
       @camp_application.update_attribute(:health_condition, params.dig(:camp_user, :health_condition))
     when :need_for_first_aid
@@ -44,5 +47,13 @@ class CampApplicationsController < ApplicationController
 
   def camp_activities_params
     params.require(:camp_user).permit(:camp_activity, :contribution)
+  end
+
+  def set_progress
+    if wizard_steps.any? && wizard_steps.index(step).present?
+      @progress = ((wizard_steps.index(step) + 1).to_d / wizard_steps.count.to_d) * 100
+    else
+      @progress = 0
+    end
   end
 end

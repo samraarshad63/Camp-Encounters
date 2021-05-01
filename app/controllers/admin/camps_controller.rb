@@ -19,6 +19,16 @@ class Admin::CampsController < AdminController
     end
   end
 
+  def change_camp_status
+    @camp = Camp.find(params[:id])
+    if @camp.status == "active"
+      @camp.update(status: "inactive")
+    else
+      @camp.update(status: "active")
+    end
+    redirect_to admin_camps_path
+  end
+
   private
   
   def camp_params

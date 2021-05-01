@@ -4,4 +4,11 @@
   <td><%= camp.start_date %></td>
   <td><%= camp.end_date %></td>
   <td><%= render camp.locations %></td>
+  <td><%= camp.status %></td>
+  <td>
+    <label class="switch">
+      <input type="checkbox" data-url="/admin/camps/<%= camp.id %>/change_camp_status" data-method="patch" data-remote="true" <%= "checked" unless camp.status == 'inactive' %>>
+      <span class="slider"></span>
+    </label>
+  </td>
 </tr>

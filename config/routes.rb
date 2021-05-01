@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :camps
+    resources :camps do
+      member do
+        patch :change_camp_status
+      end
+    end
   end
 
   resources :users do

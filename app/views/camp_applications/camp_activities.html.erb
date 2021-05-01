@@ -1,12 +1,12 @@
-<h3>Please provide your emergency contact information</h3>
+<h3>Camp Actvities</h3>
 
 <%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
   <div class="field">
     <p>Would you like to participate in one of our camp activities?</p>
     <p>
-      <%= radio_button_tag "want_to_participate", class: "want_to_participate" %>
+      <%= radio_button_tag "want_to", "participate" %>
       <%= label_tag "Yes" %>
-      <%= radio_button_tag "dont_want_to_participate", class: "dont_want_to_participate" %>
+      <%= radio_button_tag "dont_want_to", "participate" %>
       <%= label_tag "No" %>
     </p>
   </div>
@@ -19,9 +19,9 @@
   <div class="field d-none", id="check-contribution">
     <p>Would you like to contribute to any camp activities?</p>
     <p>
-      <%= radio_button_tag "want_to_contribute", class: "want_to_contribute" %>
+      <%= radio_button_tag "want_to", "contribute" %>
       <%= label_tag "Yes" %>
-      <%= radio_button_tag "dont_want_to_contribute", class: "dont_want_to_contribute" %>
+      <%= radio_button_tag "dont_want_to", "contribute" %>
       <%= label_tag "No" %>
     </p>
   </div>
@@ -33,5 +33,7 @@
 
   <%= f.submit "Next" %>
 <% end %>
+
+<%= @progress %>
 
 <%= link_to 'skip', next_wizard_path %>
