@@ -1,3 +1,5 @@
+<%= render "progress_bar", object: @progress %>
+
 <h3>Camp Actvities</h3>
 
 <%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
@@ -33,7 +35,5 @@
 
   <%= f.submit "Next" %>
 <% end %>
-
-<%= @progress %>
 
 <%= link_to 'skip', next_wizard_path %>

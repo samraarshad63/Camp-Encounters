@@ -1,9 +1,11 @@
+<%= render "progress_bar", object: @progress %>
+
 <h3>Please provide your emergency contact information</h3>
 
 <%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
   <div class="field">
     <%= f.label :emergency_contact, "Emergency Contact Number: *" %>
-    <p><%= f.text_field :emergency_contact, autofocus: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}", placeholder: "123-45-678" %></p>
+    <p><%= f.text_field :emergency_contact, autofocus: true, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}" %></p>
   </div>
 
   <div class="field">
@@ -13,7 +15,5 @@
 
   <%= f.submit "Next" %>
 <% end %>
-
-<%= @progress %>
 
 <%= link_to 'skip', next_wizard_path %>

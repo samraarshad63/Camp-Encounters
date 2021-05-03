@@ -14,14 +14,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :admin, only: [:index, :show] 
   resources :users do
     member do
       get :show_camps
       post :select_camp
       get :camp_intro
       get :check_camp_date
+      get :dashboard
     end
   end
-  resources :admin, only: [:index, :show] 
   resources :camp_applications
 end

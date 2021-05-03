@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   require 'date'
 
   before_action :authenticate_user!
-  before_action :find_user, except: [:index]
+  before_action :find_user, except: [:index, :dashboard]
 
   def index; end
 
@@ -32,7 +32,13 @@ class UsersController < ApplicationController
   def check_camp_date
     return redirect_to camp_intro_user_path, notice: 'Please participate in the next camp' if @user.camp.start_date < DateTime.now
 
-    redirect_to camp_intro_user_path, notice: 'You can register in this camp'
+    redirect_to dashboard_user_path, notice: 'You can now start working on your application.'
+  end
+
+  def dashboard
+    @user = current_user
+    @application = CampUser.find_by(user_id: @user.id)
+    @registration_steps = session[:registration_steps]
   end
 
   def find_user
