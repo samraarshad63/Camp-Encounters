@@ -1,3 +1,23 @@
 <%= render "progress_bar", object: @progress %>
 
-<h3>Confirm your registration</h3>
+<h3>Are you ready to confirm your registration?</h3>
+<p>Once you submit your application, you want be able to view or change any information that provided.</p>
+<button type= "button" id='popup', class="btn btn-primary">Submit application</button>
+
+<%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
+  <div class="modal fade dd-modal" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class='modal-description top-padding'>
+            <p>Are you sure you want to submit your application?</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <%= f.submit 'confirm', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

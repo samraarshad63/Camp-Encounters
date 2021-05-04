@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_05_01_215047) do
     t.boolean "avail_food_service"
     t.boolean "avail_internet_service"
     t.integer "progress", default: 0
+    t.boolean "submitted", default: false
     t.index ["camp_id"], name: "index_camp_users_on_camp_id"
     t.index ["user_id"], name: "index_camp_users_on_user_id"
   end

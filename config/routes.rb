@@ -24,5 +24,9 @@ Rails.application.routes.draw do
       get :dashboard
     end
   end
-  resources :camp_applications
+  resources :camp_applications do
+    member do
+      get :registration_complete
+    end
+  end
 end

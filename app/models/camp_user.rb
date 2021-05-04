@@ -11,4 +11,8 @@ class CampUser < ApplicationRecord
   CAMP_ACTIVITIES = ['none', 'Hiking', 'Fishing', 'Scavenger hunt']
 
   enum gender: USER_GENDER
+
+  def update_progress
+    update(progress: progress + 10)
+  end
 end

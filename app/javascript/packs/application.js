@@ -12,3 +12,4 @@ window.$ = window.jquery = jquery;
 import 'bootstrap';
 import 'users/signup';
 import 'camp_applications/camp_activity';
+import 'camp_applications/confirm_camp_registration';

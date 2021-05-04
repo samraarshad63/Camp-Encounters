@@ -12,5 +12,6 @@ class AddColumnToCampUsers < ActiveRecord::Migration[6.1]
     add_column :camp_users, :avail_food_service, :boolean
     add_column :camp_users, :avail_internet_service, :boolean
     add_column :camp_users, :progress, :integer, default: 0
+    add_column :camp_users, :submitted, :boolean, default: false
   end
 end
