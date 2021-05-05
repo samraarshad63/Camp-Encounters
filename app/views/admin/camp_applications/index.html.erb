@@ -1,0 +1,34 @@
+<h1>Users For Camp Encounters</h1>
+
+<div class="text-center container">
+  <table class="table">
+    <thead class='text-black'>
+      <tr>
+        <th>User ID</th>
+        <th>Camp ID</th>
+        <th>Progress</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @applications.each do |a| %>
+        <tr>
+          <td><%= a.user_id %></td>
+          <td><%= a.camp_id %></td>
+          <td><%= a.progress %>%</td>
+          <% if a.submitted %>
+            <td>Complete</td>
+          <% else %>
+            <td>Incomplete</td>
+          <% end %>
+          <td>
+            <button><%= link_to 'Show', admin_camp_application_path(a) %></button>
+            <button><%= link_to 'Edit', edit_admin_camp_application_path(a) %></button>
+            <button><%= link_to 'Destroy', edit_admin_camp_application_path(a), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

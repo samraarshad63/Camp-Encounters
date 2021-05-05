@@ -1,0 +1,90 @@
+<h1>Application Details</h1>
+
+<div class="row">
+  <div class="col-md-2">User ID</div>
+  <p class="col-md-3"><%= @application.user_id %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Camp ID</div>
+  <p class="col-md-3"><%= @application.camp_id %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Gender</div>
+  <p class="col-md-3"><%= @application.gender %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Mailing Address</div>
+  <p class="col-md-3"><%= @application.mailing_address %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Emergency Contact</div>
+  <p class="col-md-3"><%= @application.emergency_contact %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Social Media Handle</div>
+  <p class="col-md-3"><%= @application.social_media_handle %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Health Condition</div>
+  <p class="col-md-3"><%= @application.health_condition %>/p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Activity of interest</div>
+  <p class="col-md-3"><%= @application.camp_activity %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Contribution</div>
+  <p class="col-md-3"><%= @application.contribution %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">First Aid</div>
+  <% if @application.require_first_aid %>
+    <p class="col-md-3">Required</p>
+  <% else %>
+    <p class="col-md-3">Not required</p>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Food Service</div>
+  <% if @application.avail_food_service %>
+    <p class="col-md-3">Required</p>
+  <% else %>
+    <p class="col-md-3">Not required</p>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Internet Service</div>
+  <% if @application.avail_internet_service %>
+    <p class="col-md-3">Required</p>
+  <% else %>
+    <p class="col-md-3">Not required</p>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Progress</div>
+  <p class="col-md-3"><%= @application.camp_id %></p>
+</div>
+
+<div class="row">
+  <div class="col-md-2">Status</div>
+  <% if @application.submitted %>
+    <p class="col-md-3">Complete</p>
+  <% else %>
+    <p class="col-md-3">Incomplete</p>
+  <% end %>
+</div>
+
+<button><%= link_to 'Edit', edit_admin_camp_application_path(@application) %></button>
+<button><%= link_to 'Destroy', edit_admin_camp_application_path(@application), method: :delete, data: { confirm: 'Are you sure?' } %></button>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         patch :change_camp_status
       end
     end
+    resources :camp_applications
   end
 
   resources :admin, only: [:index, :show] 
