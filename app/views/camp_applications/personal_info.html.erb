@@ -5,14 +5,16 @@
 <%= form_for @camp_application, url: wizard_path, method: :put do |form| %>
 
   <%= form.fields_for @camp_application.user do |f| %>
-    <div class="field">
-      <%= f.label :firstname, "First Name: *" %>
-      <p><%= f.text_field :firstname, autofocus: true %></p>
-    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <%= f.label :firstname, "First Name: *" %>
+        <p><%= f.text_field :firstname, autofocus: true %></p>
+      </div>
 
-    <div class="field">
-      <%= f.label :lastname, "Last Name:" %>
-      <p><%= f.text_field :lastname %></p>
+      <div class="col-md-3">
+        <%= f.label :lastname, "Last Name:" %>
+        <p><%= f.text_field :lastname %></p>
+      </div>
     </div>
 
     <div class="field">
@@ -20,14 +22,16 @@
       <p><%= f.country_select :country %></p>
     </div>
 
-    <div class="field">
-      <%= f.label :contact, "Phone Number: *" %>
-      <p><%= f.telephone_field :contact, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}" %></p>
-    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <%= f.label :contact, "Phone Number: *" %>
+        <p><%= f.telephone_field :contact, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}" %></p>
+      </div>
 
-    <div class="field">
-      <%= f.label :email, "Email: *" %>
-      <p><%= f.email_field :email %></p>
+      <div class="col-md-3">
+        <%= f.label :email, "Email: *" %>
+        <p><%= f.email_field :email %></p>
+      </div>
     </div>
   <% end %>
 
@@ -46,9 +50,11 @@
         <%= image_tag(@camp_application.user_image, class: "img-thumbnail") %>
     <% end %>
   </div>
-
-  <%= form.submit "Next", class: "btn btn-primary" %>
+  
+  <button><%= link_to 'Back', previous_wizard_path %></button>
+  <div class="float-right">
+    <%= form.submit "Next", class: "btn btn-primary" %>
+    <button><%= link_to 'Skip', next_wizard_path %></button>
+  </div>
 
 <% end %>
-
-<%= link_to 'Skip', next_wizard_path %><br>

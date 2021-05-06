@@ -1,11 +1,13 @@
-<h1>Please select the application you'd like to process</h1>
+<div class="text-center container jumbotron col-md-6 align-middle">
+  <h4>Please select the application you'd like to process.</h4>
 
-<%= form_with model: @camp, url: select_camp_user_path, local: true do |f| %>
-  <p>
-    <%= f.collection_radio_buttons(:camp_id, @camps, :id, :name) do |b| %>
-      <p><%= b.label("data-value": b.value) { b.radio_button + " " + b.text } %></p>
-    <% end %>
-  </p>
+  <%= form_with model: @camp, url: select_camp_user_path, local: true do |f| %>
+    <p>
+      <%= f.collection_radio_buttons(:camp_id, @camps, :id, :name) do |b| %>
+        <p><%= b.label("data-value": b.value) { b.radio_button + " " + b.text } %></p>
+      <% end %>
+    </p>
 
-  <%= f.submit 'continue', class: 'btn btn-primary' %>
-<% end %>
+    <%= f.submit 'continue', class: 'btn btn-primary' %>
+  <% end %>
+</div>

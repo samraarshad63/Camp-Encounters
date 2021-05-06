@@ -2,6 +2,7 @@ class Admin::UsersController < AdminController
   include Sortable
 
   require 'csv'
+  require 'pagy/extras/bootstrap'
   
   helper_method :sort_column, :sort_direction
 

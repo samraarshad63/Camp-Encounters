@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one :camp, through: :camp_user
   
   MIN_PASSWORD_LENGTH = 7
-  PER_PAGE = 3
+  PER_PAGE = 4
   USER_ROLES = { 
     user: "user"
   }

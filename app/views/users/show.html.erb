@@ -1,28 +1,7 @@
-<h1>My profile</h1>
-
-<div>
-  <strong>First Name: </strong>
-  <%= @user.firstname %>
+<div class="text-center container jumbotron col-md-6 align-middle">
+  <h1><%= @user.firstname %> <%= @user.lastname %></h1>
+  <p><%= @user.email %></p>
+  <p><%= @user.contact %></p>
+  <p><%= @user.country %></p>
+  <p><button><%= link_to 'Edit Profile', edit_user_registration_path(current_user) %></button></p>
 </div>
-
-<div>
-  <strong>Last Name: </strong>
-  <%= @user.lastname %>
-</div>
-
-<div>
-  <strong>Email Address: </strong>
-  <%= @user.email %>
-</div>
-
-<div>
-  <strong>Phone Number: </strong>
-  <%= @user.contact %>
-</div>
-
-<div>
-  <strong>Country: </strong>
-  <%= @user.country %>
-</div>
-
-<%= link_to 'Edit Profile', edit_user_registration_path(current_user) %>

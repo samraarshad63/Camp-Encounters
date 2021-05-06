@@ -8,7 +8,36 @@
 <p><button><%= link_to 'Continue to Application', camp_application_path(:personal_info) %></button></p>
 
 <div class="text-center container">
-<h6>All you need to do is complete these steps and you're ready to go camping with us!</h6>
-<p>Provide personal Information</p>
+  <h6>All you need to do is complete these steps and you're ready to go camping with us!</h6>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Provide Personal Information', camp_application_path(:personal_info) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Provide Emergency Contact Information', camp_application_path(:emergency_contact_info) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Tell Us Your Activity of Interest', camp_application_path(:camp_activities) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Provide Health Related Information', camp_application_path(:condition_of_health) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Need First Aid?', camp_application_path(:need_for_first_aid) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Need Food Service?', camp_application_path(:avail_food_Service) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Need Internet Service?', camp_application_path(:avail_internet_service) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Provide Social Media Information', camp_application_path(:provide_social_media_info) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Write Us a Suggestion', camp_application_path(:provide_side_note) %>
+  </nav></p>
+  <p><nav class="navbar navbar-expand-sm navbar-custom justify-content-center text-center container">
+    <%= link_to 'Confirm Registration', camp_application_path(:confirm_camp_registration) %>
+  </nav></p>
 </div>
 

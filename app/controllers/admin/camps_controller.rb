@@ -1,6 +1,8 @@
 class Admin::CampsController < AdminController
   before_action :authenticate_admin!
 
+  require 'pagy/extras/bootstrap'
+
   def index
     @pagy, @camps = pagy(Camp.search(params[:keyword]), items: Camp::CAMPS_PER_PAGE)
   end

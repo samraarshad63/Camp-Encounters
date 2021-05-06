@@ -63,7 +63,7 @@ module Registrable
 
       when :confirm_camp_registration
         if @camp_application.progress == 90 
-          params_hash = {submitted: true}
+          params_hash = {submitted: true, progress: 100}
         else 
           jump_to(:confirm_camp_registration)
           flash[:notice] =  'Please complete your application before submitting.'

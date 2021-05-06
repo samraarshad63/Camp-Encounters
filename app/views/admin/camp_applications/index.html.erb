@@ -1,12 +1,14 @@
-<h1>Users For Camp Encounters</h1>
+<h3>Camp Applications</h3>
 
 <div class="text-center container">
-  <table class="table">
-    <thead class='text-black'>
+  <table class="table table-hover table-bordered">
+    <thead class='thead-light'>
       <tr>
-        <th>User ID</th>
-        <th>Camp ID</th>
-        <th>Progress</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Percentage of Application</th>
+        <th>Camp name</th>
         <th>Status</th>
         <th>Actions</th>
       </tr>
@@ -14,18 +16,24 @@
     <tbody>
       <% @applications.each do |a| %>
         <tr>
-          <td><%= a.user_id %></td>
-          <td><%= a.camp_id %></td>
+          <td><%= a.id %></td>
+          <td><%= a.user.firstname %> <%= a.user.lastname %></td>
+          <td><%= a.user.email %></td>
           <td><%= a.progress %>%</td>
+          <td><%= a.camp.name %></td>
+
           <% if a.submitted %>
-            <td>Complete</td>
+            <td>Completed</td>
           <% else %>
-            <td>Incomplete</td>
+            <td>In Progress</td>
           <% end %>
+
           <td>
-            <button><%= link_to 'Show', admin_camp_application_path(a) %></button>
+            <% if a.submitted %>
+              <button><%= link_to 'View', admin_camp_application_path(a) %></button>
+            <% end %>
             <button><%= link_to 'Edit', edit_admin_camp_application_path(a) %></button>
-            <button><%= link_to 'Destroy', edit_admin_camp_application_path(a), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+            <button><%= link_to 'Destroy', admin_camp_application_path(a), method: :delete, data: { confirm: 'Are you sure?' } %></button>
           </td>
         </tr>
       <% end %>

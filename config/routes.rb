@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   root 'home#index', as: :home
   get "/pages/:page", to: "pages#show", as: :pages
 
+  namespace :api do
+    namespace :version1 do
+      resources :camp_applications
+    end
+  end
   namespace :admin do
     resources :users
     resources :camps do

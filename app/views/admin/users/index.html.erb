@@ -1,38 +1,45 @@
-<h1>Users For Camp Encounters</h1>
+<h3>Users For Camp Encounters</h3>
 
 <%= form_with method: :get, local: true do |f| %>
   <%= f.text_field :keyword, value: params[:keyword] %>
   <%= f.submit 'search', class: 'btn btn-primary' %>
 <% end %>
 
-<button><%= link_to 'Export Users', admin_users_path(format: :csv) %></button>
+<p><button><%= link_to 'Export Users', admin_users_path(format: :csv) %></button></p>
 
-<table class="table">
-  <thead class='text-black'>
-    <tr>
-      <th><%= sortable 'id', @users %></th>
-      <th><%= sortable 'firstname', @users %></th>
-      <th><%= sortable 'lastname', @users %></th>
-      <th><%= sortable 'email', @users %></th>
-      <th><%= sortable 'contact', @users %></th>
-      <th><%= sortable 'country', @users %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="text-center container">
+  <table class="table table-hover table-bordered">
+    <thead class='thead-light'>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.firstname %></td>
-        <td><%= user.lastname %></td>
-        <td><%= user.email %></td>
-        <td><%= user.contact %></td>
-        <td><%= user.country %></td>
-        <td><%= link_to 'Show', admin_user_path(user) %></td>
-        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-        <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= sortable 'id', @users %></th>
+        <th><%= sortable 'firstname', @users %></th>
+        <th><%= sortable 'lastname', @users %></th>
+        <th><%= sortable 'email', @users %></th>
+        <th><%= sortable 'contact', @users %></th>
+        <th><%= sortable 'country', @users %></th>
+        <th><%= sortable 'Actions', @users %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.firstname %></td>
+          <td><%= user.lastname %></td>
+          <td><%= user.email %></td>
+          <td><%= user.contact %></td>
+          <td><%= user.country %></td>
+          <td>
+            <button><%= link_to 'Show', admin_user_path(user) %></button>
+            <button><%= link_to 'Edit', edit_admin_user_path(user) %></button>
+            <button><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%== pagy_nav(@pagy) %>
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>

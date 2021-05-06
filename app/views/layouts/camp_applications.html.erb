@@ -15,7 +15,9 @@
     
     <div class="container">
       <%= render "layouts/flash_messages" %>
-      <%= yield %>
+      <div class="container jumbotron col-md-9">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

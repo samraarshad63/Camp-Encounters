@@ -13,7 +13,9 @@
     </p>
   </div>
 
-  <%= f.submit "Next" %>
+  <button><%= link_to 'Back', previous_wizard_path %></button>
+  <div class="float-right">
+    <%= f.submit "Next", class: "btn btn-primary" %>
+    <button><%= link_to 'Skip', next_wizard_path %></button>
+  </div>
 <% end %>
-
-<%= link_to 'skip', next_wizard_path %>

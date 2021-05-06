@@ -1,26 +1,6 @@
-<h1>Admin profile</h1>
-
-<div>
-  <strong>First Name: </strong>
-  <%= @admin.firstname %>
-</div>
-
-<div>
-  <strong>Last Name: </strong>
-  <%= @admin.lastname %>
-</div>
-
-<div>
-  <strong>Email Address: </strong>
-  <%= @admin.email %>
-</div>
-
-<div>
-  <strong>Phone Number: </strong>
-  <%= @admin.contact %>
-</div>
-
-<div>
-  <strong>Country: </strong>
-  <%= @admin.country %>
+<div class="text-center container jumbotron col-md-6 align-middle">
+  <h1><%= @admin.firstname %> <%= @admin.lastname %></h1>
+  <p><%= @admin.email %></p>
+  <p><%= @admin.contact %></p>
+  <p><%= @admin.country %></p>
 </div>
