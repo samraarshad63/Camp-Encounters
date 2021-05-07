@@ -7,7 +7,7 @@
   <td><%= camp.status %></td>
   <td>
     <label class="switch">
-      <input type="checkbox" data-url="/admin/camps/<%= camp.id %>/change_camp_status" data-method="patch" data-remote="true" <%= "checked" unless camp.status == 'inactive' %>>
+      <input type="checkbox" data-url="<%= change_camp_status_admin_camp_path(camp.id) %>" data-method="patch" data-remote="true" <%= "checked" unless camp.inactive? %>>
       <span class="slider"></span>
     </label>
   </td>

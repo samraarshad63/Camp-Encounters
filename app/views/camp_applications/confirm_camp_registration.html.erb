@@ -5,7 +5,7 @@
 <button type= "button" id='popup', class="btn btn-primary">Submit application</button>
 
 <%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
-  <div class="modal fade dd-modal" id="myModal" role="dialog">
+  <div class="modal fade dd-modal" id="confirmation-modal" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">

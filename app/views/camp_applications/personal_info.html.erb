@@ -34,17 +34,15 @@
   <div>
     <table>
       <tr>Gender: *</tr>
-      <td><%= form.label :gender, "Male" %> <%= radio_button_tag(:gender, "male") %></td>
-      <td><%= form.label :gender, "Female" %> <%= radio_button_tag(:gender, "female") %></td>
-      <td><%= form.label :gender, "Other" %> <%= radio_button_tag(:gender, "other") %></td>
+      <td><%= form.label :gender, "Male" %> <%= radio_button_tag(:gender, CampUser::MALE) %></td>
+      <td><%= form.label :gender, "Female" %> <%= radio_button_tag(:gender, CampUser::FEMALE) %></td>
+      <td><%= form.label :gender, "Other" %> <%= radio_button_tag(:gender, CampUser::OTHER) %></td>
     </table>
   </div>
 
   <div>
     <%= form.file_field :user_image %>
-      <% if @camp_application.user_image.attached? %>
-        <%= image_tag(@camp_application.user_image, class: "img-thumbnail") %>
-    <% end %>
+      <%= image_tag(@camp_application.user_image, class: "img-thumbnail") if @camp_application.user_image.attached? %>
   </div>
 
   <%= form.submit "Next", class: "btn btn-primary" %>

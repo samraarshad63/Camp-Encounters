@@ -78,4 +78,16 @@ module Registrable
       @camp_application
     end
   end
+
+  def step_index_result
+    step_index = wizard_steps.each_with_index.select { |i, idx| i =~ /#{step}/ }
+
+    step_index.map! { |i| i[1] }.first + 1
+  end
+
+  def progress
+    return ((wizard_steps.index(step) + 1).to_d / wizard_steps.count.to_d) * 100 if wizard_steps.any? && wizard_steps.index(step).present?
+
+    0
+  end
 end

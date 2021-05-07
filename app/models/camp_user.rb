@@ -3,10 +3,13 @@ class CampUser < ApplicationRecord
   belongs_to :user
   has_one_attached :user_image
 
+  MALE = 'male'
+  FEMALE = 'female'
+  OTHER = 'other'
   USER_GENDER = { 
-    male: "male",
-    female: "female",
-    other: "other"
+    male: MALE,
+    female: FEMALE,
+    other: OTHER
   }
   CAMP_ACTIVITIES = ['none', 'Hiking', 'Fishing', 'Scavenger hunt']
 

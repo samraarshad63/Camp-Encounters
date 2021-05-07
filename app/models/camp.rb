@@ -27,4 +27,8 @@ class Camp < ApplicationRecord
     
     errors.add :start_date, 'should be before the end date'
   end
+
+  def invalid_camp?
+    start_date < DateTime.now
+  end
 end

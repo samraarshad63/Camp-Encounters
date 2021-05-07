@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   require 'date'
 
   before_action :authenticate_user!
-  before_action :find_user, except: [:index, :dashboard]
+  before_action :set_user, except: [:index, :dashboard]
+  before_action :set_user_camp, only: [:dashboard, :select_camp]
 
   def index; end
 
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def select_camp
-    return redirect_to camp_intro_user_path, notice: "You have already selected camp" if CampUser.find_by(user_id: params[:id]).present?
+    return redirect_to camp_intro_user_path, notice: "You have already selected camp" if @application.present?
 
     @camp_user = CampUser.new(camp_users_params)
     @camp_user.user_id = current_user.id
@@ -30,19 +31,22 @@ class UsersController < ApplicationController
   end
 
   def check_camp_date
-    return redirect_to camp_intro_user_path, notice: 'Please participate in the next camp' if @user.camp.start_date < DateTime.now
+    return redirect_to camp_intro_user_path, notice: 'Please participate in the next camp' if @user.camp.invalid_camp?
 
     redirect_to dashboard_user_path, notice: 'You can now start working on your application.'
   end
 
   def dashboard
-    @user = current_user
-    @application = CampUser.find_by(user_id: @user.id)
     @registration_steps = session[:registration_steps]
   end
 
-  def find_user
+  def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_user_camp
+    @user = current_user
+    @application = CampUser.find_by(user_id: @user.id)
   end
 
   private
