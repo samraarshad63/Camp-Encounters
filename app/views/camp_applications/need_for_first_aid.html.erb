@@ -1,0 +1,19 @@
+<%= render "progress_bar", object: @progress %>
+
+<h3>First Aid</h3>
+
+<%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
+  <div class="field">
+    <p>Please let us know if you want us to provide you with a first aid kit.</p>
+    <p>
+      <%= radio_button_tag(:require_first_aid, true) %>
+      <%= label_tag "Yes" %>
+      <%= radio_button_tag(:require_first_aid, false) %>
+      <%= label_tag "No" %>
+    </p>
+  </div>
+
+  <%= f.submit "Next" %>
+<% end %>
+
+<%= link_to 'skip', next_wizard_path %>

@@ -1,0 +1,52 @@
+<%= render "progress_bar", object: @progress %>
+
+<h3>Personal Information</h3>
+
+<%= form_for @camp_application, url: wizard_path, method: :put do |form| %>
+
+  <%= form.fields_for @camp_application.user do |f| %>
+    <div class="field">
+      <%= f.label :firstname, "First Name: *" %>
+      <p><%= f.text_field :firstname, autofocus: true %></p>
+    </div>
+
+    <div class="field">
+      <%= f.label :lastname, "Last Name:" %>
+      <p><%= f.text_field :lastname %></p>
+    </div>
+
+    <div class="field">
+      <%= f.label :country, "Country: *" %>
+      <p><%= f.country_select :country %></p>
+    </div>
+
+    <div class="field">
+      <%= f.label :contact, "Phone Number: *" %>
+      <p><%= f.telephone_field :contact, pattern: "[0-9]{3}-[0-9]{2}-[0-9]{3}" %></p>
+    </div>
+
+    <div class="field">
+      <%= f.label :email, "Email: *" %>
+      <p><%= f.email_field :email %></p>
+    </div>
+  <% end %>
+
+  <div>
+    <table>
+      <tr>Gender: *</tr>
+      <td><%= form.label :gender, "Male" %> <%= radio_button_tag(:gender, CampUser::MALE) %></td>
+      <td><%= form.label :gender, "Female" %> <%= radio_button_tag(:gender, CampUser::FEMALE) %></td>
+      <td><%= form.label :gender, "Other" %> <%= radio_button_tag(:gender, CampUser::OTHER) %></td>
+    </table>
+  </div>
+
+  <div>
+    <%= form.file_field :user_image %>
+      <%= image_tag(@camp_application.user_image, class: "img-thumbnail") if @camp_application.user_image.attached? %>
+  </div>
+
+  <%= form.submit "Next", class: "btn btn-primary" %>
+
+<% end %>
+
+<%= link_to 'Skip', next_wizard_path %><br>

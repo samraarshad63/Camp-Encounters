@@ -1,0 +1,19 @@
+<%= render "progress_bar", object: @progress %>
+
+<h3>Internet Service</h3>
+
+<%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
+  <div class="field">
+    <p>Please let us know if you want to avail our internet(wifi) service during the camp.</p>
+    <p>
+      <%= radio_button_tag(:avail_internet_service, true) %>
+      <%= label_tag "Yes" %>
+      <%= radio_button_tag(:avail_internet_service, false) %>
+      <%= label_tag "No" %>
+    </p>
+  </div>
+
+  <%= f.submit "Next" %>
+<% end %>
+
+<%= link_to 'skip', next_wizard_path %>

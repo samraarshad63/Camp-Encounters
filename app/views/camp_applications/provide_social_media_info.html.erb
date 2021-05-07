@@ -1,0 +1,12 @@
+<%= render "progress_bar", progress: @progress %>
+
+<h3>Social Media Information</h3>
+
+<%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
+  <%= f.label :social_media_handle, "Please provide us with your social media handle if you have any. Leave it to none otherwise." %>
+  <p><%= f.text_field :social_media_handle, autofocus: true %></p>
+
+  <%= f.submit "Next" %>
+<% end %>
+
+<%= link_to 'skip', next_wizard_path %>

@@ -1,0 +1,12 @@
+<%= render "progress_bar", object: @progress %>
+
+<h3>Condition of health</h3>
+
+<%= form_for @camp_application, url: wizard_path, method: :put do |f| %>
+  <%= f.label :health_condition, "Please let us know if you have any health related problems or diabilities. In case you dont, write none." %>
+  <p><%= f.text_field :health_condition, autofocus: true %></p>
+
+  <%= f.submit "Next" %>
+<% end %>
+
+<%= link_to 'skip', next_wizard_path %>

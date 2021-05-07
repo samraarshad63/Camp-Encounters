@@ -1,0 +1,13 @@
+<h3>You have completed <%= @application.progress %>% of your application</h3>
+
+<p>Hi <%= @user.firstname %>!</p>
+<p>Thankyou for starting a registration form for our <%= @user.camp.name %>.</p>
+<p>This is your personal dashboard. You can log in to this portal to check the status of your registration form, view a copy of information used and check your progress so far.</p>
+<p>If you have any questions, please feel free to <%= link_to 'Contact Us' %>.</p>
+<p>Thankyou again for your submission!</p>
+<p><button><%= link_to 'Continue to Application', camp_application_path(:personal_info) %></button></p>
+
+<h4>Applications Steps</h4>
+<% @registration_steps.each do |step| %>
+  <p><%= step %></p>
+<% end %>

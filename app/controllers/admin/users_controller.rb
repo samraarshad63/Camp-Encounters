@@ -6,7 +6,7 @@ class Admin::UsersController < AdminController
   helper_method :sort_column, :sort_direction
 
   before_action :authenticate_admin!
-  before_action :find_user, except: [:index]
+  before_action :set_user, except: [:index]
 
   def index
     @csv_users_list = User.all
@@ -61,7 +61,7 @@ class Admin::UsersController < AdminController
     params.require(:user).permit(:id, :firstname, :lastname, :email, :password, :country, :contact)
   end
 
-  def find_user
+  def set_user
     @user = User.find(params[:id])
   end
 end
